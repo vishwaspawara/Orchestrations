@@ -13,8 +13,8 @@ The system consists of:
 * **S0 (Server)**
   Hosts the centralized PostgreSQL user database and authentication scripts.
 
-  * **Ci (Clients)**
-    Client machines that authenticate users remotely through `PAM` hooks and custom shell scripts.
+* **Ci (Clients)**
+  Client machines that authenticate users remotely through `PAM` hooks and custom shell scripts.
 
     All systems are emulated using `QEMU` and connected through a Linux bridge network.
 
