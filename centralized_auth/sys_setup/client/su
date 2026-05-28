@@ -1,0 +1,23 @@
+#file destination /etc/pam.d/su
+## Authentication
+#auth       required    pam_env.so readenv=1
+#auth       required    pam_unix.so nullok
+#auth       sufficient  pam_exec.so expose_authtok /usr/local/bin/myscript.sh
+#auth       include     system-auth
+#
+## Account
+#account    required    pam_unix.so
+#
+## Password
+#password   include     system-auth
+#
+## Session
+#session    required    pam_unix.so
+#session    required    pam_env.so
+#session    optional    pam_exec.so /usr/local/bin/script.sh
+
+auth       required   pam_env.so readenv=1
+auth    required pam_unix.so nullok
+auth       sufficient pam_exec.so expose_authtok /usr/local/bin/myscript.sh
+account    sufficient  pam_exec.so /usr/local/bin/account_check.sh
+session    sufficient    pam_exec.so /usr/local/bin/script.sh

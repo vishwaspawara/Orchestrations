@@ -1,0 +1,5 @@
+#!/bin/bash
+
+#sql -d linux -c "select 1 from users where username = '$1' and password = md5('$2');"
+cmd=$(psql -d linux -c "SELECT CASE WHEN EXISTS ( SELECT 1 FROM users WHERE username = '$1' and password= md5('$2')) THEN true::text ELSE false::text END AS user_exists;"|grep 'true\|false')
+echo $cmd;

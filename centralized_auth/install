@@ -1,0 +1,5 @@
+#qemu-system-x86_64 -no-reboot -m 4096 -drive file=debian.iso,format=raw -drive file=base.raw,format=raw  -netdev user,id=mynet0,hostfwd=tcp:0.0.0.0:8922-:22,hostfwd=tcp:0.0.0.0:5443-:5432  -device virtio-net,netdev=mynet0 -smp 2 
+  
+qemu-system-x86_64 -no-reboot -m 4096 -drive if=virtio,file=postgre,format=raw -smp 2 -netdev tap,id=net0,ifname=tap0,script=no,downscript=no  -device e1000,netdev=net0,mac=52:54:30:40:39:50 -display none -daemonize 
+
+qemu-system-x86_64 -no-reboot -m 4096 -drive if=virtio,file=users,format=raw -smp 2 -netdev tap,id=net0,ifname=tap1,script=no,downscript=no  -device e1000,netdev=net0,mac=52:54:30:40:39:52 
